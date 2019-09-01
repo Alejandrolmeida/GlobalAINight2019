@@ -4,9 +4,9 @@ import torch
 import datetime
 import numpy as np
 import torch.nn as nn
-from io import StringIO
 import torch.nn.functional as F
 
+from io import StringIO
 from azureml.core.model import Model
 
 class CNN(nn.Module):
@@ -17,7 +17,7 @@ class CNN(nn.Module):
         self.conv2_drop = nn.Dropout2d()
         self.fc1 = nn.Linear(320, 50)
         self.fc2 = nn.Linear(50, 10)
-
+        
     def forward(self, x):
         x = x.view(-1, 1, 28, 28)
         x = F.relu(F.max_pool2d(self.conv1(x), 2))
@@ -51,12 +51,10 @@ def run(raw_data):
     # load and normalize image
     image = np.loadtxt(StringIO(post['image']), delimiter=',') / 255.
 
-    # run model
     with torch.no_grad():
         x = torch.from_numpy(image).float().to(device)
         pred = model(x).detach().numpy()[0]
 
-    # get timing
     current_time = time.time()
     inference_time = datetime.timedelta(seconds=current_time - prev_time)
 

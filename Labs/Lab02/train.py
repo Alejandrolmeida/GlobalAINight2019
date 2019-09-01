@@ -1,14 +1,17 @@
 import os
 import torch
 import argparse
+import numpy as np
 import torch.nn as nn
-from pathlib import Path
 import torch.onnx as onnx
 import torch.optim as optim
 import torch.nn.functional as F
+
+from time import time
+from pathlib import Path
+from collections import defaultdict
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-
 from azureml.core.run import Run
 
 ###################################################################
@@ -32,34 +35,29 @@ def check_dir(path, check=False):
 # Data Loader                                                     #
 ###################################################################
 def get_dataloader(train=True, batch_size=64, data_dir='data'):
-    digits = datasets.MNIST(data_dir, train=train, download=True,
-                        transform=transforms.Compose([
-                            transforms.ToTensor(),
-                            transforms.Lambda(lambda x: x.reshape(28*28))
-                        ]),
-                        target_transform=transforms.Compose([
-                            transforms.Lambda(lambda y: torch.zeros(10, dtype=torch.float).scatter_(0, y, 1))
-                        ])
-                     )
+    transform = transforms.Compose([transforms.RandomRotation(10), 
+                                transforms.ToTensor(),
+                                transforms.Normalize((0.5,), (0.5,))
+                              ])
+    dataset = datasets.MNIST('train', download=True, train=True, transform=transform)
+    loader = torch.utils.data.DataLoader(dataset, batch_size=64, shuffle=True)
 
-    return DataLoader(digits, batch_size=batch_size, shuffle=True, num_workers=0, pin_memory=True)
+    return loader
 
 ###################################################################
 # Saving                                                          #
 ###################################################################
-def save_model(model, device, path, name):
-    base = Path(path)
-    onnx_file = base.joinpath('{}.onnx'.format(name)).resolve()
-    pth_file = base.joinpath('{}.pth'.format(name)).resolve()
-    
-    # create dummy variable to traverse graph
-    x = torch.randint(255, (1, 28*28), dtype=torch.float).to(device) / 255
-    onnx.export(model, x, onnx_file)
-    print('Saved onnx model to {}'.format(onnx_file))
+def save_model(model, device, path, name, no_cuda):
+    if not no_cuda:
+        x = torch.randint(255, (1, 28*28), dtype=torch.float).to(device) / 255
+    else:
+        x = torch.randint(255, (1, 28*28), dtype=torch.float) / 255
 
-    # saving PyTorch Model Dictionary
-    torch.save(model.state_dict(), pth_file)
-    print('Saved PyTorch Model to {}'.format(pth_file))
+    onnx.export(model, x, "./outputs/{}.onnx".format(name))
+    print('Saved onnx model to model.onnx')
+
+    torch.save(model.state_dict(), "./outputs/{}.pth".format(name))
+    print('Saved PyTorch Model to model.pth')
 
 ###################################################################
 # Models                                                          #
@@ -108,48 +106,89 @@ class CNN(nn.Module):
 ###################################################################
 # Train/Test                                                      #
 ###################################################################
-def train(model, device, dataloader, cost, optimizer, epoch, run):
+def train(model, device, train_loader, optimizer, epoch, log_interval):
     model.train()
-    for batch, (X, Y) in enumerate(dataloader):
-        X, Y = X.to(device), Y.to(device)
+    train_log = defaultdict(list)
+    t_log = time()
+    n_samples = 0
+    for batch_idx, (data, target) in enumerate(train_loader):
+        t0 = time()
+        data, target = data.to(device), target.to(device).long()
         optimizer.zero_grad()
-        pred = model(X)
-        loss = cost(pred, Y)
+        output = model(data)
+        loss = F.cross_entropy(output, target)
+        t1 = time()
         loss.backward()
+        t2 = time()
         optimizer.step()
+        t3 = time()
+        n_samples += data.shape[0]
+        if batch_idx % log_interval == 0:
+            pred = output.max(1, keepdim=True)[1]
+            correct = pred.eq(target.view_as(pred)).sum().item()
 
-        if run != None:
-            run.log('loss', loss.item())
+            train_log['n_iter'].append(epoch * len(train_loader) + batch_idx + 1)
+            train_log['n_samples'].append(n_samples + (epoch - 1) * len(train_loader.dataset))
+            train_log['loss'].append(loss.detach())
+            train_log['accuracy'].append(100. * correct / data.shape[0])
+            train_log['time_batch'].append(t3 - t0)
+            train_log['time_batch_forward'].append(t1 - t0)
+            train_log['time_batch_backward'].append(t2 - t1)
+            train_log['time_batch_update'].append(t3 - t2)
+            t4 = time()
+            train_log['time_batch_avg'].append((t4 - t_log) / log_interval)
+            print(
+                'Train Epochs: {} [{:5d}/{:5d} ({:3.0f}%)]'
+                '\tLoss: {:.6f}'
+                '\tTime: {:.4f}ms/batch'.format(
+                    epoch, n_samples, len(train_loader.dataset),
+                    100. * (batch_idx + 1) / len(train_loader), loss.item(),
+                    1000 * (t4 - t_log) / log_interval,
+                )
+            )
+            t_log = time()
+    return train_log
 
-        if batch % 100 == 0:
-            print('loss: {:>10f}  [{:>5d}/{:>5d}]'.format(loss.item(), batch * len(X), len(dataloader.dataset)))
-
-def test(model, device, dataloader, cost, run):
+def test(model, device, test_loader, log_interval):
     model.eval()
     test_loss = 0
     correct = 0
+    preds = []
+    targets = []
+    num_batches = 0
     with torch.no_grad():
-        for batch, (X, Y) in enumerate(dataloader):
-            X, Y = X.to(device), Y.to(device)
-            pred = model(X)
+        for data, target in test_loader:
+            num_batches += 1
+            data, target = data.to(device), target.to(device).long()
+            output = model(data)
+            test_loss += F.cross_entropy(output, target, reduction='sum').item()
+            pred = output.max(1, keepdim=True)[1]
+            correct += pred.eq(target.view_as(pred)).sum().item()
+            preds.append(pred.cpu().numpy())
+            targets.append(target.cpu().numpy())
+    
+    preds = np.concatenate(preds).squeeze()
+    targets = np.concatenate(targets).squeeze()
 
-            test_loss += cost(pred, Y).item()
-            correct += (pred.argmax(1) == Y.argmax(1)).type(torch.float).sum().item()
-
-    test_loss /= len(dataloader.dataset)
-    correct /= len(dataloader.dataset)
-
-    if run != None:
-        run.log('accuracy', 100*correct)
-
-    print('\nTest Error:')
-    print('acc: {:>0.1f}%, avg loss: {:>8f}'.format(100*correct, test_loss))
+    test_loss /= len(test_loader.dataset)
+    accuracy = 100. * correct / len(test_loader.dataset)
+    print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.3f}%)\n'
+        ''.format(
+            test_loss,
+            correct, len(test_loader.dataset), accuracy,
+            )
+        )
+    return test_loss, accuracy
 
 ###################################################################
 # Main Loop                                                       #
 ###################################################################
-def main(data_dir, output_dir, log_dir, epochs, batch, lr, model_kind):
+def main(data_dir, output_dir, log_dir, epochs, batch, lr, model_kind, log_interval):
     # use GPU?
+    no_cuda=False
+    use_cuda = not no_cuda and torch.cuda.is_available()
+    device = torch.device("cuda" if use_cuda else "cpu")
+    print('Using {} device'.format(device))
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
     # AML Logging (if available)
@@ -182,39 +221,32 @@ def main(data_dir, output_dir, log_dir, epochs, batch, lr, model_kind):
     info('Model')
     print(model)
 
-    # cost function
-    cost = torch.nn.BCELoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+    train_log = defaultdict(list)
+    val_log = defaultdict(list)
 
-    # optimizers
-    optimizer = optim.Adam(model.parameters(), lr=lr)
+    train(model, device, training, optimizer, epochs, log_interval)
+    test(model, device, testing, log_interval)
 
-    for epoch in range(1, epochs + 1):
-        info('Epoch {}'.format(epoch))
-        train(model, device, training, cost, optimizer, epoch, run)
-        test(model, device, testing, cost, run)
-
-    # save model
     info('Saving Model')
-    save_model(model, device, output_dir, 'model')
+    save_model(model, device, output_dir, 'model', no_cuda)
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='CNN Training for Image Recognition.')
     parser.add_argument('-d', '--data', help='directory to training and test data', default='data')
     parser.add_argument('-o', '--output', help='output directory', default='outputs')
     parser.add_argument('-g', '--logs', help='log directory', default='logs')
-    
     parser.add_argument('-e', '--epochs', help='number of epochs', default=5, type=int)
-    parser.add_argument('-b', '--batch', help='batch size', default=100, type=int)
+    parser.add_argument('-b', '--batch', help='batch size', default=64, type=int)
     parser.add_argument('-l', '--lr', help='learning rate', default=0.001, type=float)
-
     parser.add_argument('-m', '--model', help='model type', default='cnn', choices=['linear', 'nn', 'cnn'])
+    parser.add_argument('-log', '--loginterval', help='log interval', default=10, type=int)
 
     args = parser.parse_args()
 
-    # enforce folder locatations
     args.data = check_dir(args.data).resolve()
     args.outputs = check_dir(args.output).resolve()
     args.logs = check_dir(args.logs).resolve()
 
     main(data_dir=args.data, output_dir=args.output, log_dir=args.logs, 
-         epochs=args.epochs, batch=args.batch, lr=args.lr, model_kind=args.model)
+         epochs=args.epochs, batch=args.batch, lr=args.lr, model_kind=args.model, log_interval=args.loginterval)
