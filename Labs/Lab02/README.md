@@ -1,9 +1,19 @@
-# TL;DR
+# GLOBAL AI NIGHTS - Lab 02 Deep Learning with Pytorch and Azure
+![](images/logoai.png)
+![](images/globaai.jpg)
 [![Azure Notebooks](https://notebooks.azure.com/launch.svg)](https://notebooks.azure.com/import/gh/sethjuarez/pytorchintro)
+
+# Requirements for the Lab 
+1. Ananconda and Jupyter Notebook Local
+    - Instalation: https://www.anaconda.com/distribution/
+    - Conda commands to create local env: ```conda create -n myenv python=3.5```
+    - Once the env have been installed succefully we need to install by pip: ```pip install azureml-sdk[notebooks,automl]```
+3. Azure CLI. https://docs.microsoft.com/es-es/cli/azure/install-azure-cli-windows?view=azure-cli-latest
+4. Active Azure Subscription
 
 Do this:
 1. Click the Launch button above. In the new page that opens click the "Import" button to import the notebook.
-2. Run [start.ipynb](start.ipynb) to learn about ML and PyTorch
+2. Run [lab02.ipynb](start.ipynb) to learn about ML and PyTorch
 3. Run [cloud.ipynb](cloud.ipynb) to learn about AzureML service
 4. (other things)
 5. Become a multi-millionaire AI startup founder
@@ -37,7 +47,7 @@ overlpping sections:
 - Large Scale Experimentation, Deployment - Cloud
 
 # Local
-The [starting notebook](start.ipynb) shows the local approach
+The [starting notebook](lab02.ipynb) shows the local approach
 to the Machine Learning Process. In this notebook you will
 find the first 5 steps outlined above but on a smaller scale
 (in this case the problem is small as is - generally for larger
