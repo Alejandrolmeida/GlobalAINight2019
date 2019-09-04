@@ -1,12 +1,9 @@
-# Global AI Nights - Lab 02 
-## Deep Learning with Pytorch and Azure
 ![](images/logoai.png)
 ![](images/globaai.jpg)
+# AI Nights Content - Intermediate
+# Lab 02 - Deep Learning with Pytorch and Azure
 [![Azure Notebooks](https://notebooks.azure.com/launch.svg)](https://notebooks.azure.com/import/gh/sethjuarez/pytorchintro)
-
-
-
-# Requirements for the Lab 
+## Requirements for the Lab 
 1. Ananconda and Jupyter Notebook Local
     - Instalation: https://www.anaconda.com/distribution/
     - Conda commands to create local env: ```conda create -n myenv python=3.5```
@@ -24,7 +21,7 @@ Do this:
 Add an issue to the repo if something doesn't work so I can 
 fix it!
 
-# Machine Learning Quickstart
+## Machine Learning Quickstart
 The purpose of this brief tutorial is to get you oriented
 on the Machine Learning Process. Machine Learning (ML) is
 basically a different way of creating "code" or something
@@ -49,7 +46,7 @@ overlpping sections:
 - Problem, Data, Experimentation - Local
 - Large Scale Experimentation, Deployment - Cloud
 
-# Local
+## Local
 The [starting notebook](lab02.ipynb) shows the local approach
 to the Machine Learning Process. In this notebook you will
 find the first 5 steps outlined above but on a smaller scale
@@ -57,7 +54,7 @@ find the first 5 steps outlined above but on a smaller scale
 problems we begin on a small scale and then once some of the
 hypothesis are proved we move to large scale).
 
-# Cloud
+## Cloud
 The [cloud notebook](cloud.ipynb) shows what a large scale
 approach would be using Azure Machine Learning service and
 covers steps 4-7 outlined above. In this case the dataset
@@ -67,7 +64,7 @@ our thoughts on a small subset of all available data locally
 and then move to cloud scale when testing our hypothesis' on
 the full dataset.
 
-# Problem
+## Problem
 Because I am more interested that you learn the process I decided
 to go with the "Hello World" of Machine Learning: **predicting 
 digits**.
@@ -79,7 +76,7 @@ the actual handwritten number? Mathematically speaking, given
 a 784 sized vector of numbers between 0-255, can you return the 
 corresponding digit?
 
-# Questions and/or Suggestions
+## Questions and/or Suggestions
 If there is any part of this that is hard to understand please
 add an issue to the repo! Would love to make this super easy to
 understand. My personal opinion is that everyone can understand
