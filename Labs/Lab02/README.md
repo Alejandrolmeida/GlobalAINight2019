@@ -1,7 +1,10 @@
-# GLOBAL AI NIGHTS - Lab 02 Deep Learning with Pytorch and Azure
+# Global AI Nights - Lab 02 
+## Deep Learning with Pytorch and Azure
 ![](images/logoai.png)
 ![](images/globaai.jpg)
 [![Azure Notebooks](https://notebooks.azure.com/launch.svg)](https://notebooks.azure.com/import/gh/sethjuarez/pytorchintro)
+
+
 
 # Requirements for the Lab 
 1. Ananconda and Jupyter Notebook Local
