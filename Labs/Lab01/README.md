@@ -1,6 +1,3 @@
-![](docs-images/logoai.png)
-![](docs-images/globaai.jpg)
-
 # AI Nights Content - Beginner
 ## Lab 01 - Creating applications that can see, hear, speak or understand - using Microsoft Cognitive Services
 
