@@ -87,3 +87,4 @@ The laboratories collected in this repository are an adaptation of the original 
 If you wish you can check the original repositories:
 - [Original content Lab01](https://github.com/amynic/AINights) 
 - [Original content Lab02](https://github.com/sethjuarez/pytorchintro)
+- [Original content all materials](https://github.com/GlobalAICommunity/GlobalAINight-September-2019)
