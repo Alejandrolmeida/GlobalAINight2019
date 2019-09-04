@@ -26,6 +26,28 @@ You can follow this event through social networks and social tools:
     - HHasgtags: [#GlobalAINight](https://twitter.com/search?q=%23GlobalAINight), 
 [#GlobalAIBootcamp](https://twitter.com/search?q=%23GlobalAINight)
 
+# Keynote
+
+The global organization wants to offer you this emotional Keynote in which some organizers and the Microsoft team are involved.
+
+[![Kenote Video](docs-images/keynote.png)](https://globalaibootcamp.blob.core.windows.net/keynote/Global_AI_Night_Keynote_5_September_2019_subs.mp4 "Watch Kenote Video")
+
+We want to congratulate and thank everyone for this video (in order of appearance):
+- [Tim Scarfe](https://twitter.com/ecsquendor)
+- [Tess Ferrandez](https://twitter.com/TessFerrandez)
+- [Vlad Iliescu](https://twitter.com/vladiliescu)
+- [Damian Brady](https://twitter.com/damovisa)
+- [Bruno Campuano](https://twitter.com/elbruno)
+- [Galiya Warrier](https://twitter.com/galiyawarrier)
+- [Marian Dragt](https://twitter.com/mariandragt)
+- [Matthew Renze](https://twitter.com/MatthewRenze)
+- [Henk Boelman](https://twitter.com/hboelman)
+- [Amy Boyd](https://twitter.com/AmyKateNicho)
+- [Seth Juarez](https://twitter.com/sethjuarez)
+- [Eric Boyd](https://twitter.com/eric_boyd)
+- [Leila Etaati](https://twitter.com/leila_etaati)
+- [Has Altaiar](https://twitter.com/hasaltaiar)
+
 # Workshops
 
 ## Beginner Track
