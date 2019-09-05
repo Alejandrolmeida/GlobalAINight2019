@@ -13,17 +13,17 @@ During this AI Night you will get inspired through sessions and get your hands d
 
 Azurebrains is a local community member of The Global AI Community, focused on Azure and AI technologies.
 
-If you want to join or know about this local community you can enter directly through this link [Azurebrains Meetup](https://www.meetup.com/es-ES/Azurebrains/) and also check his blog at [Azurebrains blog](https://www.azurebrains.com).
+If you want to join or know about this local community you can enter directly through this link [Azurebrains Meetup](https://www.meetup.com/es-ES/Azurebrains/) and also check our blog at [Azurebrains blog](https://www.azurebrains.com).
 
 ![Azurebrains](docs-images/azurebrains.png)
 
-Also if you want to know more about [Global AI Community](https://globalai.community/) you can get this link [Global AI Community Meetup](https://www.meetup.com/es-ES/pro/the-global-ai-community).
+Also if you want to know more about [Global AI Community](https://globalai.community/) you can click on this link [Global AI Community Meetup](https://www.meetup.com/es-ES/pro/the-global-ai-community).
 
 
 ![Global AI Bootcamp](docs-images/globalaicommunity.png)
 
 ### Local Sponsors 
-Special thanks to our local sponsors who have brought us goodies for the attendees, their offices and many pizzas!
+Special thanks to our local sponsors who have brought us goodies for the attendees, lend us their offices and many pizzas!
 
 ![Plain Concepts](docs-images/plainconcepts.png)
 ![Bravent](docs-images/bravent.png)
