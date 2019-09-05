@@ -1,8 +1,8 @@
-# AI Nights **BONUS** Content - Beginner Track
+# AI Nights **BONUS** Content - Beginner
 
 ## Pre-requisites for your machine
-* Clone this repository to your local machine to gain images and code samples you need for the demos: ```git clone https://github.com/amynic/ainights-sessionowners.git```
-* [Microsoft Azure Subscription](https://azure.microsoft.com/en-gb/free/?WT.mc_id=ainights-github-amynic)
+* Clone this repository to your local machine to gain images and code samples you need for the demos: ```git clone https://github.com/Alejandrolmeida/GlobalAINight2019.git```
+* [Microsoft Azure Subscription](https://azure.microsoft.com/en-gb/free/)
 * Laptop with a modern web browser (Google Chrome, Microsoft Edge)
 * [Postman, API Development Environment - available on Windows, Linux and macOS](https://www.getpostman.com/downloads/)
 * [Download docker for your local machine - available on Windows, Linux and macOS](https://docs.docker.com/docker-for-windows/)
@@ -19,7 +19,7 @@
 
 In this task you will try out the Cognitive Services using the website demo options
 
-Navigate to: [https://azure.microsoft.com/en-gb/services/cognitive-services/directory/vision/](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/vision/?WT.mc_id=ainights-github-amynic)
+Navigate to: [https://azure.microsoft.com/en-gb/services/cognitive-services/directory/vision/](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/vision/)
 
 ![Computer Vision website Link highlighted](/docs-images/computer-vision-link.JPG)
 
@@ -37,7 +37,7 @@ Now select **Browse** button and upload the **cat.jpeg** or **city.jpeg** image 
 
 Now you will try using the REST protocol as you would use to integrate these services into an application
 
-First log into [Microsoft Azure](https://azure.microsoft.com/en-gb/?WT.mc_id=ainights-github-amynic) and choose **Portal** in the top right corner.
+First log into [Microsoft Azure](https://azure.microsoft.com/en-gb/) and choose **Portal** in the top right corner.
 
 Once in the portal select **Create a resource** and search **Cognitive Services** and choose Enter. Then select **Create** on the Cognitive Services blade
 
@@ -96,13 +96,13 @@ You can also try other options from the REST API - such as KeyPhrases function. 
 
 * ![Key Phrases REST Request](/docs-images/keyphrases.JPG)
 
-> Check out the language support for the Text Analytics API [here](https://docs.microsoft.com/en-gb/azure/cognitive-services/text-analytics/language-support/?WT.mc_id=ainights-github-amynic). If your language is supported please edit the JSON file to translate the text and show the functionality of the API above. There is an example of a French JSON file in ```sample-code/text-analytics-demo/sentiment-analysis-text-fr.json``` please edit this file as appropriate
+> Check out the language support for the Text Analytics API [here](https://docs.microsoft.com/en-gb/azure/cognitive-services/text-analytics/language-support/). If your language is supported please edit the JSON file to translate the text and show the functionality of the API above. There is an example of a French JSON file in ```sample-code/text-analytics-demo/sentiment-analysis-text-fr.json``` please edit this file as appropriate
 
-> If you have any issues running Postman, API Development Environment you can always run the REST API requests within the API docs for [sentiment analysis](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9/?WT.mc_id=ainights-github-amynic) and [key phrase extraction](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6/?WT.mc_id=ainights-github-amynic). Select the data centre you are using and then enter your key in the box provided along with the sample body sample used in Postman
+> If you have any issues running Postman, API Development Environment you can always run the REST API requests within the API docs for [sentiment analysis](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9/) and [key phrase extraction](https://northeurope.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6/). Select the data centre you are using and then enter your key in the box provided along with the sample body sample used in Postman
 
 ## Task B: Microsoft Azure Cognitive Services - Text Analytics in a Container
 
-Demo based on the Azure Documentation: [Install and run Text Analytics containers](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers/?WT.mc_id=ainights-github-amynic)
+Demo based on the Azure Documentation: [Install and run Text Analytics containers](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers/)
 
 In order to run this demo you will need Docker installed locally on your machine
 [Download docker for your local machine here - available on Windows, Linux and macOS](https://docs.docker.com/docker-for-windows/)
@@ -165,7 +165,7 @@ To stop the container from running when you finish, go back ot the command line 
 
 > NOTE: you must use your organizational account to use PowerApps. As this may become an issue 
 
-Navigate to: [https://powerapps.microsoft.com/en-us/?WT.mc_id=build2019-event-amynic](https://powerapps.microsoft.com/en-us/) and sign in with your organizational account.
+Navigate to: [https://powerapps.microsoft.com/en-us/](https://powerapps.microsoft.com/en-us/) and sign in with your organizational account.
 
 This will take you to the PowerApps main menu screen. Select the **Canvas App from Blank** button
 
