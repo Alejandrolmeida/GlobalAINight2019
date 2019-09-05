@@ -23,7 +23,7 @@ Also if you want to know more about [Global AI Community](https://globalai.commu
 ![Global AI Bootcamp](docs-images/globalaicommunity.png)
 
 ### Local Sponsors 
-Special thanks to our local sponsors who have brought us goodies for the attendees, lend us their offices and many pizzas!
+Special thanks to our local sponsors who have brought us goodies for the attendees, lend us their facilities and many pizzas!
 
 ![Plain Concepts](docs-images/plainconcepts.png)
 ![Bravent](docs-images/bravent.png)
