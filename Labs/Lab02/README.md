@@ -1,5 +1,3 @@
-![](images/logoai.png)
-![](images/globaai.jpg)
 # AI Nights Content - Intermediate
 # Lab 02 - Deep Learning with Pytorch and Azure
 [![Azure Notebooks](https://notebooks.azure.com/launch.svg)](https://notebooks.azure.com/import/gh/sethjuarez/pytorchintro)

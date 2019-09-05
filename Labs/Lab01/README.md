@@ -1,16 +1,13 @@
-![](docs-images/logoai.png)
-![](docs-images/globaai.jpg)
-
 # AI Nights Content - Beginner
 ## Lab 01 - Creating applications that can see, hear, speak or understand - using Microsoft Cognitive Services
 
-**Session Abstract:** In this workshop you will be introduced to the [Microsoft Azure Cognitive Services](https://azure.microsoft.com/en-gb/services/cognitive-services/?WT.mc_id=ainights-github-amynic), a range of offerings you can use to infuse intelligence and machine learning into your applications without needing to build the code from scratch. 
-We will cover pre-trained AI APIs, such as [computer vision](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/vision/?WT.mc_id=ainights-github-amynic) and [text analytics](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/lang/?WT.mc_id=ainights-github-amynic), that are accessed by REST protocol. Next we will dive into Custom AI that uses transfer learning - [Microsoft Azure Custom Vision](https://azure.microsoft.com/en-gb/services/cognitive-services/custom-vision-service/?WT.mc_id=ainights-github-amynic). This enables you to provide a small amount of your own data to train an image classification model. Wrapping the workshop up by building our custom trained AI into an application - using [Logic Apps](https://azure.microsoft.com/en-gb/services/logic-apps/?WT.mc_id=ainights-github-amynic), this technology is ideal for building data pipeline processes that work with your machine learning models.
+**Session Abstract:** In this workshop you will be introduced to the [Microsoft Azure Cognitive Services](https://azure.microsoft.com/en-gb/services/cognitive-services/), a range of offerings you can use to infuse intelligence and machine learning into your applications without needing to build the code from scratch. 
+We will cover pre-trained AI APIs, such as [computer vision](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/vision/) and [text analytics](https://azure.microsoft.com/en-gb/services/cognitive-services/directory/lang/), that are accessed by REST protocol. Next we will dive into Custom AI that uses transfer learning - [Microsoft Azure Custom Vision](https://azure.microsoft.com/en-gb/services/cognitive-services/custom-vision-service/). This enables you to provide a small amount of your own data to train an image classification model. Wrapping the workshop up by building our custom trained AI into an application - using [Logic Apps](https://azure.microsoft.com/en-gb/services/logic-apps/), this technology is ideal for building data pipeline processes that work with your machine learning models.
 
 
 ## Pre-requisites for your machine
-* Clone this repository to your local machine to gain images and code samples you need for the demos: ```git clone https://github.com/amynic/AINights.git``` or choose 'Clone or Download' green button and then 'Download ZIP'
-* [Microsoft Azure Subscription](https://azure.microsoft.com/en-gb/free/?WT.mc_id=ainights-github-amynic)
+* Clone this repository to your local machine to gain images and code samples you need for the demos: ```git clone https://github.com/Alejandrolmeida/GlobalAINight2019.git``` or choose 'Clone or Download' green button and then 'Download ZIP'
+* [Microsoft Azure Subscription](https://azure.microsoft.com/en-gb/free/)
 * Laptop with a modern web browser (Google Chrome, Microsoft Edge)
 
 > *All demos and content have been tested on a Windows PC, however all options should run from macOS and Linux machines as well. Please provide information via an issue or pull request if you have feedback on other operating systems*  
@@ -51,9 +48,9 @@ First create a Custom Vision instance in your Azure account.
     * Choose the S0 tier for both 'Prediction pricing tier' and Training pricing tier
     * Choose 'Create New' under resource group, enter 'ainights' and click ok.
     * Click Create
-* ![Custom Vision Blade Details](/docs-images/custom-vision-azure.JPG)
+* ![Custom Vision Blade Details](docs-images/custom-vision-azure.JPG)
 
-Now we can build our classifier, navigate to [https://www.customvision.ai](https://www.customvision.ai/?WT.mc_id=ainights-github-amynic) and choose sign in. Sign in with your Azure credentials account
+Now we can build our classifier, navigate to [https://www.customvision.ai](https://www.customvision.ai/) and choose sign in. Sign in with your Azure credentials account
 
 > Accept the terms and conditions box to continue
 
