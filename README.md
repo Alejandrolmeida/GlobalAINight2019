@@ -20,7 +20,7 @@ If you want to join or know about this local community you can enter directly th
 Also if you want to know more about [Global AI Community](https://globalai.community/) you can get this link [Global AI Community Meetup](https://www.meetup.com/es-ES/pro/the-global-ai-community).
 
 
-![Global AI Bootcamp](docs-images/globalaicommunity.svg)
+![Global AI Bootcamp](docs-images/globalaicommunity.png)
 
 ### local sponsors 
 Special thanks to our local sponsors who have brought us goodies for the attendees, have left us offices and have given us pizzas!
