@@ -48,7 +48,7 @@ You can follow this event through social networks and social tools:
 
 The global organization wants to offer you this emotional Keynote in which some organizers and the Microsoft team are involved.
 
-[![Kenote Video](docs-images/keynote.png)](https://globalaibootcamp.blob.core.windows.net/keynote/Global_AI_Night_Keynote_5_September_2019_subs.mp4 "Watch Kenote Video")
+[![Kenote Video](docs-images/keynote.png)](https://www.youtube.com/watch?v=tI2cFB6Du-w "Watch Kenote Video")
 
 We want to congratulate and thank everyone for this video (in order of appearance):
 - [Tim Scarfe](https://twitter.com/ecsquendor)
