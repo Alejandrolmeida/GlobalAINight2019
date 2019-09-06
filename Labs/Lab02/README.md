@@ -6,6 +6,7 @@
     - Instalation: https://www.anaconda.com/distribution/
     - Conda commands to create local env: ```conda create -n myenv python=3.5```
     - Once the env have been installed succefully we need to install by pip: ```pip install azureml-sdk[notebooks,automl]```
+    - Set conda env into jupyter notebook: ```python -m ipykernel install --user --name myenv --display-name "Python (myenv)"```
 3. Azure CLI. https://docs.microsoft.com/es-es/cli/azure/install-azure-cli-windows?view=azure-cli-latest
 4. Active Azure Subscription
 
